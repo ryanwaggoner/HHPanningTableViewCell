@@ -39,7 +39,7 @@
 #define HH_PANNING_BOUNCE_DISTANCE		10.0f
 #define HH_PANNING_MINIMUM_PAN			50.0f
 #define HH_PANNING_MAXIMUM_PAN			0.0f	// Set to 0.0f for full view width
-#define HH_PANNING_TRIGGER_OFFSET		100.0f
+#define HH_PANNING_TRIGGER_OFFSET		20.0f
 #define HH_PANNING_SHADOW_INSET			-10.0f
 #define HH_PANNING_USE_VELOCITY			YES
 #define HH_PANNING_DEFAULT_DRAWER_OFFSET 0.0f
@@ -320,10 +320,10 @@ static NSString *const												kTranslationContext		= @"translation";
 		CGFloat translation = 0.0f;
 
 		if (direction == HHPanningTableViewCellDirectionRight) {
-			translation = bounds.size.width - self.drawerOffset;
+			translation = self.maximumPan;
 		}
 		else {
-			translation = -bounds.size.width + self.drawerOffset;
+			translation = -self.maximumPan;
 		}
 
 		[self installViews];
